@@ -6,10 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lista de tareas</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700;900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js" type="text/javascript" defer></script>
   </head>
   <body>
@@ -24,6 +28,7 @@
         </div>
         <div id="dateText"></div>
       </div>
+      <h1 class="title">Mis Tareas</h1>
       <form onsubmit="addNewTask(event)">
         <input
           type="text"
@@ -32,16 +37,22 @@
           placeholder="Nueva tarea"
           class="roundBorder"
         />
-        <button type="submit" class="addTaskButton">+</button>
+        <button type="submit" class="addTaskButton" title="Añadir tarea">
+          <i class="fas fa-plus"></i>
+        </button>
         <button
           type="button"
           class="orderButton roundBorder"
           onclick="renderOrderedTasks()"
+          title="Ordenar tareas"
         >
-          Ordenar
+          <i class="fas fa-sort-amount-down"></i> Ordenar
         </button>
       </form>
       <div id="tasksContainer"></div>
+      <div class="footer">
+        <p>Haz clic en una tarea para marcarla como completada</p>
+      </div>
     </div>
   </body>
 </html>

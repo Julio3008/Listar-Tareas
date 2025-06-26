@@ -1,16 +1,21 @@
 :root {
-  --primary: #a5c882;
-  --secondary: #d33f49;
+  --primary: #4caf50;
+  --secondary: #f44336;
   --light: #fff;
-  --dark: #000;
-  --diabled: #e7e7e7;
+  --dark: #333;
+  --disabled: #f5f5f5;
+  --text: #424242;
+  --shadow: rgba(0, 0, 0, 0.1);
 }
 
 body {
   font-family: "Lato", sans-serif;
   margin: 0;
   height: 100vh;
-  background-color: var(--diabled);
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 *:first-letter {
@@ -18,21 +23,34 @@ body {
 }
 
 .roundBorder {
-  border-radius: 5px;
+  border-radius: 8px;
 }
 
 .list {
-  margin: 25px auto;
-  padding: 25px;
+  margin: 0 auto;
+  padding: 30px;
   background-color: var(--light);
   width: 100%;
-  max-width: 350px;
+  max-width: 400px;
+  box-shadow: 0 10px 30px var(--shadow);
+  transition: all 0.3s ease;
+}
+
+.title {
+  color: var(--primary);
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 20px;
+  text-align: center;
+  letter-spacing: 1px;
 }
 
 .date {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 25px;
+  color: var(--text);
 }
 
 .dateRight {
@@ -42,11 +60,14 @@ body {
 
 #dateNumber {
   font-size: 50px;
+  font-weight: 900;
+  color: var(--primary);
 }
 
 #dateText {
   letter-spacing: 3px;
   text-transform: uppercase;
+  font-size: 14px;
 }
 
 #dateMonth,
@@ -65,18 +86,26 @@ form {
   margin: 20px 0;
   display: grid;
   grid-auto-flow: column;
-  grid-template-columns: auto 35px auto;
+  grid-template-columns: 1fr auto auto;
   grid-column-gap: 15px;
 }
 
 input {
   border: none;
-  padding-left: 10px;
-  background-color: var(--diabled);
+  padding: 12px 15px;
+  background-color: var(--disabled);
+  color: var(--dark);
+  font-size: 16px;
+  transition: all 0.3s ease;
 }
 
 input:focus {
   outline: none;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.3);
+}
+
+input::placeholder {
+  color: #9e9e9e;
 }
 
 .addTaskButton,
@@ -84,30 +113,102 @@ input:focus {
   border: none;
   font-weight: bold;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .addTaskButton {
-  height: 35px;
+  height: 45px;
+  width: 45px;
   border-radius: 50%;
   font-size: 18px;
-  background-color: var(--diabled);
+  background-color: var(--primary);
+  color: var(--light);
+  box-shadow: 0 3px 5px var(--shadow);
+}
+
+.addTaskButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px var(--shadow);
+  background-color: #43a047;
 }
 
 .orderButton {
   background-color: var(--secondary);
   color: var(--light);
+  padding: 0 15px;
+  box-shadow: 0 3px 5px var(--shadow);
+}
+
+.orderButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px var(--shadow);
+  background-color: #e53935;
 }
 
 .task {
   background-color: var(--primary);
-  padding: 15px;
+  padding: 15px 20px;
   margin-top: 15px;
   color: var(--light);
   cursor: pointer;
+  font-weight: 400;
+  box-shadow: 0 3px 5px var(--shadow);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.task:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px var(--shadow);
+}
+
+.task::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 5px;
+  background-color: #388e3c;
 }
 
 .done {
-  background-color: var(--diabled);
+  background-color: var(--disabled);
   text-decoration: line-through;
-  color: var(--dark);
+  color: #757575;
+}
+
+.done::before {
+  background-color: #bdbdbd;
+}
+
+.footer {
+  margin-top: 25px;
+  text-align: center;
+  font-size: 14px;
+  color: #9e9e9e;
+}
+
+.footer p {
+  margin: 0;
+}
+
+@media (max-width: 480px) {
+  .list {
+    margin: 15px;
+    padding: 20px;
+  }
+
+  form {
+    grid-template-columns: 1fr auto;
+  }
+
+  .orderButton {
+    grid-column: span 2;
+    margin-top: 10px;
+    height: 40px;
+  }
 }
